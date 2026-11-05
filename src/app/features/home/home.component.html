@@ -1,0 +1,38 @@
+<header class="site-header">
+  <a class="brand" href="#inicio" aria-label="BIOZONE, inicio">
+    <!-- LOGO DEL CLIENTE: reemplazar src/assets/images/biozone-logo.jpg por el archivo oficial si se entrega una versión de mayor calidad. -->
+    <img src="assets/images/biozone-logo.jpg" alt="Centro Médico BIOZONE - El camino hacia una vida mejor">
+    <span><strong>BIOZONE</strong><small>Centro Médico · El camino hacia una vida mejor</small></span>
+  </a>
+  <nav class="main-nav"><a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#citas">Agendar cita</a></nav>
+  <a class="header-cta" href="#citas">Solicitar cita <span>↗</span></a>
+</header>
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-copy">
+      <span class="eyebrow">CENTRO MÉDICO BIOZONE</span>
+      <h1>Tu bienestar comienza con una <em>vida en equilibrio.</em></h1>
+      <p>Un espacio de atención y orientación pensado para acompañarte en el camino hacia una vida más saludable.</p>
+      <div class="hero-actions"><a class="button primary" href="#citas">Agenda tu consulta <span>→</span></a><a class="text-link" href="#servicios">Conoce nuestros servicios <span>↗</span></a></div>
+      <div class="hero-points"><span><b>✳</b> Atención cercana</span><span><b>✳</b> Enfoque integral</span><span><b>✳</b> Bienestar consciente</span></div>
+    </div>
+    <div class="hero-art" aria-label="Identidad visual del Centro Médico BIOZONE">
+      <div class="art-orbit"></div><div class="art-leaf leaf-one"></div><div class="art-leaf leaf-two"></div>
+      <div class="art-center"><span>✦</span><strong>Tu salud,<br>nuestro propósito.</strong><small>EL CAMINO HACIA UNA VIDA MEJOR</small></div>
+      <div class="art-note"><span>✧</span><div><strong>Cuidar de ti</strong><small>es el primer paso</small></div></div>
+    </div>
+  </section>
+  <section class="trust-strip" id="nosotros"><div><strong>01</strong><span>Atención<br>personalizada</span></div><div><strong>02</strong><span>Visión integral<br>de la salud</span></div><div><strong>03</strong><span>Bienestar a largo<br>plazo</span></div><div><strong>04</strong><span>Acompañamiento<br>cercano</span></div></section>
+  <section class="intro section-wrap"><div><span class="eyebrow">SOBRE BIOZONE</span><h2>Un camino más consciente hacia tu bienestar.</h2></div><p>En BIOZONE creemos que cuidar la salud va más allá de atender una molestia. Queremos ofrecerte un entorno de escucha, orientación y acompañamiento, donde cada persona encuentre atención de acuerdo con sus necesidades.</p></section>
+  <section class="services section-wrap" id="servicios"><div class="section-heading"><div><span class="eyebrow">NUESTROS SERVICIOS</span><h2>Atención enfocada en ti.</h2><p>Conoce algunas de las áreas en las que podemos acompañarte.</p></div><a class="text-link" href="#citas">Solicitar información ↗</a></div>
+    <div class="service-grid"><article class="service-card" *ngFor="let service of services"><span class="service-icon">{{ service.icon }}</span><h3>{{ service.title }}</h3><p>{{ service.description }}</p><a href="#citas" aria-label="Agendar {{ service.title }}">Conocer más <span>→</span></a></article></div>
+  </section>
+  <section class="appointment-section" id="citas"><div class="appointment-aside"><span class="eyebrow">ESTAMOS PARA ACOMPAÑARTE</span><h2>Da el primer paso hacia tu bienestar.</h2><p>Completa el formulario y registra tu solicitud de cita. Nos pondremos en contacto contigo para coordinar la atención.</p><div class="aside-detail"><span>✆</span><div><small>¿Tienes alguna pregunta?</small><strong>Contáctanos directamente</strong></div></div><small class="privacy-note">La información suministrada se utilizará únicamente para gestionar tu solicitud de cita.</small></div>
+    <form class="appointment-form" [formGroup]="appointmentForm" (ngSubmit)="submitAppointment()" novalidate><div class="form-title"><span class="eyebrow">AGENDA EN LÍNEA</span><h3>Solicita tu cita</h3><p>Los campos marcados con * son obligatorios.</p></div>
+      <div class="field-grid"><label>Nombre completo *<input formControlName="patientName" placeholder="Tu nombre y apellido"><small *ngIf="appointmentForm.controls.patientName.touched && appointmentForm.controls.patientName.invalid">Ingresa al menos 3 caracteres.</small></label><label>Teléfono *<input formControlName="phone" type="tel" placeholder="Número de contacto"><small *ngIf="appointmentForm.controls.phone.touched && appointmentForm.controls.phone.invalid">Ingresa un teléfono válido.</small></label><label>Correo electrónico *<input formControlName="email" type="email" placeholder="nombre@correo.com"><small *ngIf="appointmentForm.controls.email.touched && appointmentForm.controls.email.invalid">Ingresa un correo válido.</small></label><label>Tipo de consulta *<select formControlName="service"><option>Consulta médica</option><option>Medicina natural</option><option>Bienestar preventivo</option><option>Control y seguimiento</option></select></label><label>Fecha preferida *<input formControlName="date" type="date" [min]="minDate"><small *ngIf="appointmentForm.controls.date.touched && appointmentForm.controls.date.invalid">Selecciona una fecha.</small></label><label>Hora preferida *<select formControlName="time"><option value="">Selecciona un horario</option><option>08:00</option><option>09:00</option><option>10:00</option><option>11:00</option><option>14:00</option><option>15:00</option><option>16:00</option></select></label></div>
+      <label>Cuéntanos brevemente el motivo de tu consulta<textarea formControlName="notes" rows="3" placeholder="Información adicional (opcional)"></textarea></label>
+      <p class="success-message" *ngIf="successMessage" role="status">✓ {{ successMessage }}</p><button class="button primary submit-button" type="submit">Enviar solicitud <span>→</span></button><p class="form-footnote">El envío registra una solicitud, no confirma automáticamente la disponibilidad.</p>
+    </form>
+  </section>
+</main>
+<footer class="site-footer"><a class="footer-brand" href="#inicio"><strong>BIOZONE</strong><span>Centro Médico<br>El camino hacia una vida mejor</span></a><p>Un camino consciente hacia tu bienestar.</p><div><a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#citas">Agendar cita</a><a routerLink="/administracion">Administración</a></div><small>© {{ currentYear }} Centro Médico BIOZONE. Todos los derechos reservados.</small></footer>

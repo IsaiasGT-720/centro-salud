@@ -1,0 +1,1 @@
+:root{--sand:#E0D7C8;--ink:#000200;--lavender:#6C72AC;--blue:#496678;--sand-accent:#CAAF92;--olive:#92944B;--dark-green:#465742;--muted:#77786e}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--sand);color:var(--ink);font-family:'DM Sans',sans-serif}button,input,select,textarea{font:inherit}::selection{background:#496678;color:#fff}
